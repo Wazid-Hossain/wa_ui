@@ -62,6 +62,8 @@ class Home_page extends StatelessWidget {
               label: 'Calls',
               backgroundColor: Colors.white),
         ],
+        selectedItemColor: Colors.greenAccent,
+        unselectedItemColor: Colors.grey,
       ),
     );
   }
