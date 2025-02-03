@@ -6,10 +6,13 @@ class Home_page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
-        title:
-            const Text('WhatsApp Clone', style: TextStyle(color: Colors.white)),
+        title: const Text(
+          'WhatsApp Clone',
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
         backgroundColor: Colors.black,
         //for add more button in appbar usings actions
         actions: [
@@ -64,6 +67,9 @@ class Home_page extends StatelessWidget {
         ],
         selectedItemColor: Colors.greenAccent,
         unselectedItemColor: Colors.grey,
+        selectedFontSize: 20,
+        unselectedFontSize: 15,
+        backgroundColor: Colors.black,
       ),
     );
   }
