@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 
-class Home_page extends StatelessWidget {
+class Home_page extends StatefulWidget {
   const Home_page({super.key});
+
+  @override
+  State<Home_page> createState() => _Home_pageState();
+}
+
+class _Home_pageState extends State<Home_page> {
+  int currentIndex = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
         title: const Text(
           'WhatsApp Clone',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.indigo,
         //for add more button in appbar usings actions
         actions: [
           IconButton(
@@ -70,6 +76,20 @@ class Home_page extends StatelessWidget {
         selectedFontSize: 20,
         unselectedFontSize: 15,
         backgroundColor: Colors.black,
+        currentIndex: currentIndex,
+        onTap: (index) {
+          print('Current Index is $index');
+          //for change the current index of bottomNavigationBar using setState
+          setState(() {
+            currentIndex = index;
+          });
+        },
+      ),
+      //for add new message button in bottom right corner using floatingActionButton
+      //End of bottomNavigationBar
+      //for add drawer in left side of appbar
+      drawer: Drawer(
+        backgroundColor: Colors.white,
       ),
     );
   }
