@@ -19,7 +19,7 @@ class _Home_pageState extends State<Home_page> {
           'WhatsApp Clone',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.black,
         //for add more button in appbar usings actions
         actions: [
           IconButton(
@@ -39,6 +39,19 @@ class _Home_pageState extends State<Home_page> {
           )
         ],
         //End of actions
+      ),
+      body: Center(
+        child: Container(
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+            color: Colors.green,
+            borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+              colors: [Colors.purple, Colors.greenAccent],
+            ),
+          ),
+        ),
       ),
       //for add new message button in bottom right corner using floatingActionButton
       floatingActionButton: FloatingActionButton(
