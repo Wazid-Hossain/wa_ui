@@ -41,16 +41,44 @@ class _Home_pageState extends State<Home_page> {
         //End of actions
       ),
       body: Center(
-        child: Container(
-          height: 100,
-          width: 100,
-          decoration: BoxDecoration(
-            color: Colors.green,
-            borderRadius: BorderRadius.circular(10),
-            gradient: LinearGradient(
-              colors: [Colors.purple, Colors.greenAccent],
+        child: Column(
+          children: [
+            Container(
+              height: 100,
+              width: 100,
+              decoration: BoxDecoration(
+                color: Colors.green,
+                // borderRadius: BorderRadius.circular(10),
+                gradient: LinearGradient(
+                  colors: [Colors.purple, Colors.greenAccent],
+                ),
+                shape: BoxShape.circle,
+              ),
             ),
-          ),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide(color: Colors.green),
+                ),
+                label: Text('Enter your Mail'),
+                hintText: 'abc@abc.com',
+                prefixIcon: Icon(Icons.search),
+              ),
+            ),
+            TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                label: Text('Enter Your Password'),
+                hintText: '********',
+              ),
+            ),
+          ],
         ),
       ),
       //for add new message button in bottom right corner using floatingActionButton
