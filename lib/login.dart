@@ -18,7 +18,7 @@ class _Login_pageState extends State<Login_page> {
       appBar: AppBar(
         elevation: 0,
         title: const Text(
-          'ZEO TEX BD',
+          'ZEO TEXT BD',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.indigo,
@@ -50,22 +50,26 @@ class _Login_pageState extends State<Login_page> {
                     Column(
                       children: [
                         Center(
-                            child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(10),
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.indigo, width: 2),
+                                borderRadius: BorderRadius.all(Radius.zero),
+                              ),
+                              hintText: 'Enter your email',
+                              hintStyle: TextStyle(color: Colors.black),
+                              label: Text('Email'),
+                              prefixIcon: Icon(Icons.email_outlined),
                             ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide:
-                                  BorderSide(color: Colors.indigo, width: 2),
-                              borderRadius: BorderRadius.all(Radius.zero),
-                            ),
-                            hintText: 'Enter your email',
-                            hintStyle: TextStyle(color: Colors.black),
+                            keyboardType: TextInputType.emailAddress,
                           ),
-                        )),
+                        ),
                         SizedBox(
-                          height: 10,
+                          height: 20,
                         ),
                         TextField(
                           decoration: InputDecoration(
@@ -79,7 +83,28 @@ class _Login_pageState extends State<Login_page> {
                             ),
                             hintText: 'Enter your password',
                             hintStyle: TextStyle(color: Colors.black),
+                            label: Text('Password'),
+                            prefixIcon: Icon(Icons.lock_outline),
+                            suffixIcon: Icon(Icons.visibility_off_outlined),
+                            // for click the eye icon to show the password we use the below code
+                            /*suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _obscureText = !_obscureText;
+                                });
+                              },
+                              icon: Icon(
+                                _obscureText
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              ),
+                            ),*/
                           ),
+                          keyboardType: TextInputType.visiblePassword,
+                          obscureText: true,
+                        ),
+                        SizedBox(
+                          height: 40,
                         ),
                         ElevatedButton(
                           onPressed: () {
@@ -90,7 +115,22 @@ class _Login_pageState extends State<Login_page> {
                               ),
                             );
                           },
-                          child: const Text('Login'),
+                          child: const Text(
+                            'Login',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.cyanAccent,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 150, vertical: 10),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                         ),
                       ],
                     )
