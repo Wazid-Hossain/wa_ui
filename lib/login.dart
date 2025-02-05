@@ -9,6 +9,7 @@ class Login_page extends StatefulWidget {
 }
 
 class _Login_pageState extends State<Login_page> {
+  bool _obscureText = true;
   int currentIndex = 1;
 
   @override
@@ -60,7 +61,7 @@ class _Login_pageState extends State<Login_page> {
                                     BorderSide(color: Colors.indigo, width: 2),
                                 borderRadius: BorderRadius.all(Radius.zero),
                               ),
-                              hintText: 'Enter your email',
+                              hintText: 'example@abc.com',
                               hintStyle: TextStyle(color: Colors.black),
                               label: Text('Email'),
                               prefixIcon: Icon(Icons.email_outlined),
@@ -85,9 +86,9 @@ class _Login_pageState extends State<Login_page> {
                             hintStyle: TextStyle(color: Colors.black),
                             label: Text('Password'),
                             prefixIcon: Icon(Icons.lock_outline),
-                            suffixIcon: Icon(Icons.visibility_off_outlined),
+                            // suffixIcon: Icon(Icons.visibility_off_outlined),
                             // for click the eye icon to show the password we use the below code
-                            /*suffixIcon: IconButton(
+                            suffixIcon: IconButton(
                               onPressed: () {
                                 setState(() {
                                   _obscureText = !_obscureText;
@@ -98,7 +99,8 @@ class _Login_pageState extends State<Login_page> {
                                     ? Icons.visibility
                                     : Icons.visibility_off,
                               ),
-                            ),*/
+                            ),
+                            //or if we want to click the eye icon or any other icon we use gesture detector or inkwell
                           ),
                           keyboardType: TextInputType.visiblePassword,
                           obscureText: true,
