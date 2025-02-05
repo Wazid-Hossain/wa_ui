@@ -45,24 +45,27 @@ class _Login_pageState extends State<Login_page> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+
                     // To input Iamge from the internet letter
                     Column(
                       children: [
                         Center(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: Colors.indigo, width: 2),
-                                borderRadius: BorderRadius.all(Radius.zero),
-                              ),
-                              hintText: 'Enter your email',
-                              hintStyle: TextStyle(color: Colors.black),
+                            child: TextField(
+                          decoration: InputDecoration(
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10),
                             ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.indigo, width: 2),
+                              borderRadius: BorderRadius.all(Radius.zero),
+                            ),
+                            hintText: 'Enter your email',
+                            hintStyle: TextStyle(color: Colors.black),
                           ),
+                        )),
+                        SizedBox(
+                          height: 10,
                         ),
                         TextField(
                           decoration: InputDecoration(
