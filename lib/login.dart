@@ -25,56 +25,78 @@ class _Login_pageState extends State<Login_page> {
       ),
       body: Center(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Center(
-                child: Container(
-                  height: 400,
-                  width: 400,
-                  decoration: BoxDecoration(
-                    color: Colors.green,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Column(
-                    children: [
-                      Center(
-                        child: TextField(
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Center(
+              child: Container(
+                height: 400,
+                width: 400,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                      'ZEO TEXT BD',
+                      style: TextStyle(
+                        color: Colors.indigo,
+                        fontSize: 10,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    // To input Iamge from the internet letter
+                    Column(
+                      children: [
+                        Center(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.indigo, width: 2),
+                                borderRadius: BorderRadius.all(Radius.zero),
+                              ),
+                              hintText: 'Enter your email',
+                              hintStyle: TextStyle(color: Colors.black),
+                            ),
+                          ),
+                        ),
+                        TextField(
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
-                            hintText: 'Enter your email',
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: Colors.indigo, width: 2),
+                              borderRadius: BorderRadius.all(Radius.zero),
+                            ),
+                            hintText: 'Enter your password',
                             hintStyle: TextStyle(color: Colors.black),
                           ),
                         ),
-                      ),
-                      TextField(
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          hintText: 'Enter your password',
-                          hintStyle: TextStyle(color: Colors.black),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => Login_page(),
+                              ),
+                            );
+                          },
+                          child: const Text('Login'),
                         ),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => Login_page(),
-                            ),
-                          );
-                        },
-                        child: const Text('Login'),
-                      ),
-                    ],
-                  ),
+                      ],
+                    )
+                    // To input Iamge from the internet letter
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ]),
         ),
       ),
     );
