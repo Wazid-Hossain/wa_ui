@@ -17,29 +17,30 @@ class _Login_pageState extends State<Login_page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         elevation: 0,
         title: const Text(
           'ZEO TEX BD',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.black,
       ),
       body: Center(
-        child: SingleChildScrollView(
+        child: Center(
           child: Center(
-            child: Center(
+            child: SingleChildScrollView(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Center(
                       child: Padding(
-                        padding: const EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(15),
                         child: Container(
-                          height: 500,
+                          height: 550,
                           width: 400,
                           decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Colors.grey[300],
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
@@ -66,7 +67,7 @@ class _Login_pageState extends State<Login_page> {
                                   height: 100),
                               // To input Iamge from the internet letter
                               Padding(
-                                padding: const EdgeInsets.all(15),
+                                padding: const EdgeInsets.all(10),
                                 child: Column(
                                   children: [
                                     Center(
@@ -229,21 +230,51 @@ class _Login_pageState extends State<Login_page> {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 50,
+                                      height: 80,
                                     ),
-                                    Text(
-                                      'version: 3.2',
-                                      style: TextStyle(
-                                          color: Colors.cyan,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.bold),
-                                    )
+                                    Column(
+                                      children: [
+                                        Align(
+                                          alignment: Alignment.center,
+                                          child: Text(
+                                            'version: 3.2',
+                                            style: TextStyle(
+                                              color: Colors.cyan,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                        // Text(
+                                        //   'version: 3.2',
+                                        //   style: TextStyle(
+                                        //       color: Colors.cyan,
+                                        //       fontSize: 15,
+                                        //       fontWeight: FontWeight.bold),
+                                        // ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
-
-                              // To input Iamge from the internet letter
                             ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Align(
+                      alignment: Alignment.bottomCenter,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text(
+                          'Text at the bottom',
+                          style: TextStyle(
+                            color: Colors.cyan,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),

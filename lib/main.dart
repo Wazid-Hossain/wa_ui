@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wa_ui/home.dart';
 import 'package:wa_ui/login.dart';
+import 'package:wa_ui/text.dart';
 
 void main() {
   runApp(const MyApp());
