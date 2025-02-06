@@ -12,6 +12,7 @@ class _Login_pageState extends State<Login_page> {
   bool _obscureText = true;
   int currentIndex = 1;
   bool _rememberMe = false;
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -63,73 +64,104 @@ class _Login_pageState extends State<Login_page> {
                         child: Column(
                           children: [
                             Center(
-                              child: TextFormField(
-                                decoration: InputDecoration(
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: Colors.indigo, width: 2),
-                                    borderRadius: BorderRadius.all(Radius.zero),
-                                  ),
-                                  hintText: 'example@abc.com',
-                                  hintStyle: TextStyle(color: Colors.black),
-                                  label: Text('Email',
-                                      style: TextStyle(
-                                        color: Colors.cyan,
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.bold,
-                                      )),
-                                  prefixIcon: Icon(Icons.email_outlined),
+                              child: Form(
+                                key: _formKey,
+                                child: Column(
+                                  children: [
+                                    TextFormField(
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return 'Please enter your email';
+                                        } else if (!value.contains('@')) {
+                                          return 'Please enter a valid email address';
+                                        }
+                                        return null;
+                                      },
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.indigo, width: 2),
+                                          borderRadius:
+                                              BorderRadius.all(Radius.zero),
+                                        ),
+                                        hintText: 'example@abc.com',
+                                        hintStyle:
+                                            TextStyle(color: Colors.black),
+                                        label: Text('Email',
+                                            style: TextStyle(
+                                              color: Colors.cyan,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold,
+                                            )),
+                                        prefixIcon: Icon(Icons.email_outlined),
+                                      ),
+                                      keyboardType: TextInputType.emailAddress,
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    TextFormField(
+                                      validator: (value) {
+                                        if (value!.isEmpty) {
+                                          return 'Please enter your password';
+                                        } else if (value.length < 6) {
+                                          return 'Password must be at least 6 characters';
+                                        }
+                                        ;
+                                        return null;
+                                      },
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                              color: Colors.indigo, width: 2),
+                                          borderRadius:
+                                              BorderRadius.all(Radius.zero),
+                                        ),
+                                        hintText: 'Enter your password',
+                                        hintStyle:
+                                            TextStyle(color: Colors.black),
+                                        label: Text(
+                                          'Password',
+                                          style: TextStyle(
+                                              color: Colors.cyan,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        prefixIcon: Icon(Icons.lock_outline),
+                                        // suffixIcon: Icon(Icons.visibility_off_outlined),
+                                        // for click the eye icon to show the password we use the below code
+                                        suffixIcon: IconButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              _obscureText = !_obscureText;
+                                            });
+                                          },
+                                          icon: Icon(
+                                            _obscureText
+                                                ? Icons.visibility
+                                                : Icons.visibility_off,
+                                          ),
+                                        ),
+                                        //or if we want to click the eye icon or any other icon we use gesture detector or inkwell
+                                      ),
+                                      keyboardType:
+                                          TextInputType.visiblePassword,
+                                      obscureText: true,
+                                    ),
+                                    SizedBox(
+                                      height: 40,
+                                    ),
+                                  ],
                                 ),
-                                keyboardType: TextInputType.emailAddress,
                               ),
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            TextFormField(
-                              decoration: InputDecoration(
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Colors.indigo, width: 2),
-                                  borderRadius: BorderRadius.all(Radius.zero),
-                                ),
-                                hintText: 'Enter your password',
-                                hintStyle: TextStyle(color: Colors.black),
-                                label: Text(
-                                  'Password',
-                                  style: TextStyle(
-                                      color: Colors.cyan,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                prefixIcon: Icon(Icons.lock_outline),
-                                // suffixIcon: Icon(Icons.visibility_off_outlined),
-                                // for click the eye icon to show the password we use the below code
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _obscureText = !_obscureText;
-                                    });
-                                  },
-                                  icon: Icon(
-                                    _obscureText
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                  ),
-                                ),
-                                //or if we want to click the eye icon or any other icon we use gesture detector or inkwell
-                              ),
-                              keyboardType: TextInputType.visiblePassword,
-                              obscureText: true,
-                            ),
-                            SizedBox(
-                              height: 40,
                             ),
                             Checkbox(
                               value: _rememberMe,
@@ -143,12 +175,14 @@ class _Login_pageState extends State<Login_page> {
                             // Text('Remember Me'),
                             ElevatedButton(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => Login_page(),
-                                  ),
-                                );
+                                if (_formKey.currentState!.validate()) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Login_page(),
+                                    ),
+                                  );
+                                }
                               },
                               child: const Text(
                                 'Login',
