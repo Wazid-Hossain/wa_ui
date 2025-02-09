@@ -57,17 +57,20 @@ class _Login_pageState extends State<Login_page> {
                                 'ZEO TEXT BD',
                                 style: TextStyle(
                                   color: Colors.cyan,
-                                  fontSize: 15,
+                                  fontSize: 10,
                                   fontWeight: FontWeight.bold,
                                   fontStyle: FontStyle.italic,
                                 ),
                               ),
                               Image(
                                   image: AssetImage('images/zeo_logo.jpg'),
-                                  height: 100),
+                                  height: 60),
+                              SizedBox(
+                                height: 40,
+                              ),
                               // To input Iamge from the internet letter
                               Padding(
-                                padding: const EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   children: [
                                     Center(
@@ -99,9 +102,10 @@ class _Login_pageState extends State<Login_page> {
                                                       BorderRadius.all(
                                                           Radius.zero),
                                                 ),
-                                                hintText: 'example@abc.com',
+                                                hintText: 'abc@example.com',
                                                 hintStyle: TextStyle(
-                                                    color: Colors.black),
+                                                    color: const Color.fromARGB(
+                                                        255, 234, 205, 205)),
                                                 label: Text('Email',
                                                     style: TextStyle(
                                                       color: Colors.cyan,
@@ -144,7 +148,8 @@ class _Login_pageState extends State<Login_page> {
                                                 ),
                                                 hintText: 'Enter your password',
                                                 hintStyle: TextStyle(
-                                                    color: Colors.black),
+                                                    color: const Color.fromARGB(
+                                                        255, 220, 207, 207)),
                                                 label: Text(
                                                   'Password',
                                                   style: TextStyle(
@@ -159,10 +164,12 @@ class _Login_pageState extends State<Login_page> {
                                                 // for click the eye icon to show the password we use the below code
                                                 suffixIcon: IconButton(
                                                   onPressed: () {
-                                                    setState(() {
-                                                      _obscureText =
-                                                          !_obscureText;
-                                                    });
+                                                    setState(
+                                                      () {
+                                                        _obscureText =
+                                                            !_obscureText;
+                                                      },
+                                                    );
                                                   },
                                                   icon: Icon(
                                                     _obscureText
