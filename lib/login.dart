@@ -40,7 +40,7 @@ class _Login_pageState extends State<Login_page> {
                           height: 550,
                           width: 400,
                           decoration: BoxDecoration(
-                            color: Colors.grey[300],
+                            color: Color.fromARGB(66, 66, 66, 255),
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
@@ -189,13 +189,21 @@ class _Login_pageState extends State<Login_page> {
                                     Checkbox(
                                       value: _rememberMe,
                                       onChanged: (value) {
-                                        setState(() {
-                                          _rememberMe = value!;
-                                        });
-                                        Text('Remember Me');
+                                        setState(
+                                          () {
+                                            _rememberMe = value!;
+                                          },
+                                        );
                                       },
                                     ),
-                                    Text('Remember Me'),
+                                    Text(
+                                      'Remember Me',
+                                      style: TextStyle(
+                                        color: Colors.cyan,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                     SizedBox(
                                       height: 10,
                                     ),
