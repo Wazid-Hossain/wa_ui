@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wa_ui/home.dart';
+import 'package:wa_ui/sing_up.dart';
 
 class Login_page extends StatefulWidget {
   const Login_page({super.key});
@@ -216,6 +217,9 @@ class _Login_pageState extends State<Login_page> {
                                     ),
                                     ElevatedButton(
                                       onPressed: () {
+                                        Dialog(
+                                          child: Text('Login Successful'),
+                                        );
                                         if (_formKey.currentState!.validate()) {
                                           Navigator.push(
                                             context,
@@ -238,6 +242,35 @@ class _Login_pageState extends State<Login_page> {
                                         backgroundColor: Colors.cyanAccent,
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 100, vertical: 10),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Sign_up()));
+                                      },
+                                      child: Text(
+                                        'Sing Up',
+                                        style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.cyanAccent,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 80, vertical: 10),
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(10),
