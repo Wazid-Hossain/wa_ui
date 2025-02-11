@@ -293,13 +293,6 @@ class _Login_pageState extends State<Login_page> {
                                             ),
                                           ),
                                         ),
-                                        // Text(
-                                        //   'version: 3.2',
-                                        //   style: TextStyle(
-                                        //       color: Colors.cyan,
-                                        //       fontSize: 15,
-                                        //       fontWeight: FontWeight.bold),
-                                        // ),
                                       ],
                                     ),
                                   ],
