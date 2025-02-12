@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:wa_ui/api_services/apiServices.dart';
 import 'package:wa_ui/home.dart';
+import 'package:wa_ui/homeScreen.dart';
+import 'package:wa_ui/model.dart';
 import 'package:wa_ui/sing_up.dart';
 
 class Login_page extends StatefulWidget {
@@ -14,6 +17,10 @@ class _Login_pageState extends State<Login_page> {
   int currentIndex = 1;
   bool _rememberMe = false;
   final _formKey = GlobalKey<FormState>();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  LoginModel loginModel = LoginModel();
 
   @override
   Widget build(BuildContext context) {
@@ -80,6 +87,7 @@ class _Login_pageState extends State<Login_page> {
                                         child: Column(
                                           children: [
                                             TextFormField(
+                                              controller: email,
                                               validator: (value) {
                                                 if (value!.isEmpty) {
                                                   return 'Please enter your email';
@@ -123,6 +131,7 @@ class _Login_pageState extends State<Login_page> {
                                               height: 10,
                                             ),
                                             TextFormField(
+                                              controller: password,
                                               validator: (value) {
                                                 if (value!.isEmpty) {
                                                   return 'Please enter your password';
@@ -215,15 +224,25 @@ class _Login_pageState extends State<Login_page> {
                                     ),
                                     ElevatedButton(
                                       onPressed: () {
-                                        Dialog(
-                                          child: Text('Login Successful'),
-                                        );
+                                        Apiservices()
+                                            .loginwithmodel(
+                                                email.text.toString(),
+                                                password.text.toString())
+                                            .then((value) {
+                                          setState(() {
+                                            loginModel = value!;
+                                          });
+                                        }).onError((error, stackTrace) {
+                                          print(error);
+                                        });
                                         if (_formKey.currentState!.validate()) {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                              builder: (context) =>
-                                                  Login_page(),
+                                              builder: (context) => HomeScreen(
+                                                token:
+                                                    loginModel.token.toString(),
+                                              ),
                                             ),
                                           );
                                         }
