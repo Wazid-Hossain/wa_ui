@@ -41,7 +41,7 @@ class _Login_pageState extends State<Login_page> {
                           height: 550,
                           width: 400,
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(66, 66, 66, 255),
+                            color: Colors.greenAccent,
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
@@ -105,8 +105,7 @@ class _Login_pageState extends State<Login_page> {
                                                 ),
                                                 hintText: 'abc@example.com',
                                                 hintStyle: TextStyle(
-                                                    color: const Color.fromARGB(
-                                                        255, 234, 205, 205)),
+                                                    color: Colors.black),
                                                 label: Text('Email',
                                                     style: TextStyle(
                                                       color: Colors.cyan,
@@ -149,8 +148,7 @@ class _Login_pageState extends State<Login_page> {
                                                 ),
                                                 hintText: 'Enter your password',
                                                 hintStyle: TextStyle(
-                                                    color: const Color.fromARGB(
-                                                        255, 220, 207, 207)),
+                                                    color: Colors.black),
                                                 label: Text(
                                                   'Password',
                                                   style: TextStyle(
