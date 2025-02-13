@@ -28,7 +28,7 @@ class Homescreen extends StatelessWidget {
             Text('Mobile: ${loginModel.user?.mobile ?? "N/A"}'),
             Text('Role: ${loginModel.user?.role ?? "N/A"}'),
             Text('Status: ${loginModel.user?.status ?? "N/A"}'),
-            Text('code: ${loginModel.user?.status ?? "N/A"}'),
+            Text('code: ${loginModel.user?.code ?? "N/A"}'),
           ],
         ),
       ),

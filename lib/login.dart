@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:wa_ui/api_services/apiServices.dart'; // Import your ApiServices
-import 'package:wa_ui/home.dart';
+import 'package:wa_ui/api_services/apiServices.dart';
 import 'package:wa_ui/homeScreen.dart';
 import 'package:wa_ui/model.dart';
-import 'package:wa_ui/sing_up.dart'; // Import your LoginModel and User classes
+import 'package:wa_ui/sing_up.dart';
 
 class Login_page extends StatefulWidget {
   const Login_page({super.key});
@@ -226,7 +225,7 @@ class _Login_pageState extends State<Login_page> {
                                   Text(
                                     'Remember Me',
                                     style: TextStyle(
-                                      color: Colors.cyan,
+                                      color: Colors.black,
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold,
                                     ),
