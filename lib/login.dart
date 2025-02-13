@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wa_ui/api_services/apiServices.dart'; // Import your ApiServices
 import 'package:wa_ui/home.dart';
+import 'package:wa_ui/homeScreen.dart';
 import 'package:wa_ui/model.dart';
 import 'package:wa_ui/sing_up.dart'; // Import your LoginModel and User classes
 
@@ -46,7 +47,9 @@ class _Login_pageState extends State<Login_page> {
           // Navigate to the home page
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Home_page()),
+            MaterialPageRoute(
+              builder: (context) => Homescreen(loginModel: response),
+            ),
           );
         } else {
           // Login failed
