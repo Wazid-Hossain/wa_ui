@@ -22,7 +22,7 @@ class _Sign_upState extends State<Sign_up> {
           height: 350,
           width: 300,
           decoration: BoxDecoration(
-            color: Color.fromARGB(66, 66, 66, 255),
+            color: Colors.greenAccent,
             borderRadius: BorderRadius.circular(20),
           ),
           child: SingleChildScrollView(

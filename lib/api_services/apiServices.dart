@@ -1,20 +1,22 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import '../model.dart';
+import 'package:wa_ui/model.dart';
 
-class Apiservices {
+class ApiServices {
   Future<LoginModel?> loginwithmodel(String email, String password) async {
     try {
-      var url = Uri.parse("https://reqres.in/api/login");
-      var respone =
+      final url =
+          Uri.parse("https://zeotexbd.com/api/login"); // Add your API URL here
+      final response =
           await http.post(url, body: {"email": email, "password": password});
 
-      if (respone.statusCode == 200) {
-        LoginModel model = LoginModel.fromJson(jsonDecode(respone.body));
+      if (response.statusCode == 200) {
+        LoginModel model = LoginModel.fromJson(jsonDecode(response.body));
         return model;
       }
     } catch (e) {
       print(e);
     }
+    return null;
   }
 }
