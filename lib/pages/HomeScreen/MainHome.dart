@@ -117,7 +117,8 @@ class _MainHomeState extends State<MainHome> {
               children: [
                 Container(
                   height: 400,
-                  width: 500,
+                  width:
+                      500, //our we use double.infinity to adject the container full screen
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(20),
@@ -147,7 +148,10 @@ class _MainHomeState extends State<MainHome> {
                         children: [
                           IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.chevron_left),
+                            icon: Icon(
+                              Icons.chevron_left,
+                              color: Colors.deepOrange,
+                            ),
                           ),
                           Text(
                             'February, 2025',
@@ -157,7 +161,11 @@ class _MainHomeState extends State<MainHome> {
                                 fontSize: 10),
                           ),
                           IconButton(
-                              onPressed: () {}, icon: Icon(Icons.chevron_right))
+                              onPressed: () {},
+                              icon: Icon(
+                                Icons.chevron_right,
+                                color: Colors.deepOrange,
+                              ))
                         ],
                       ),
                       SizedBox(
