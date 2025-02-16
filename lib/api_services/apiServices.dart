@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:wa_ui/model.dart';
+import 'package:wa_ui/models/model.dart';
 
 class ApiServices {
   Future<LoginModel?> loginwithmodel(String email, String password) async {

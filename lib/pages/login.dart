@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wa_ui/api_services/apiServices.dart';
-import 'package:wa_ui/homeScreen.dart';
-import 'package:wa_ui/model.dart';
-import 'package:wa_ui/sing_up.dart';
+import 'package:wa_ui/pages/homeScreen.dart';
+import 'package:wa_ui/models/model.dart';
+import 'package:wa_ui/pages/sing_up.dart';
 
 class Login_page extends StatefulWidget {
   const Login_page({super.key});

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wa_ui/model.dart';
+import 'package:wa_ui/models/model.dart'; // Import your LoginModel and User classes
 
-class Homescreen extends StatelessWidget {
-  final LoginModel loginModel;
-  const Homescreen({super.key, required this.loginModel});
+class Home_page extends StatelessWidget {
+  final LoginModel loginModel; // Accept the API response
+
+  const Home_page({super.key, required this.loginModel});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,6 @@ class Homescreen extends StatelessWidget {
             Text('Mobile: ${loginModel.user?.mobile ?? "N/A"}'),
             Text('Role: ${loginModel.user?.role ?? "N/A"}'),
             Text('Status: ${loginModel.user?.status ?? "N/A"}'),
-            Text('code: ${loginModel.user?.code ?? "N/A"}'),
           ],
         ),
       ),

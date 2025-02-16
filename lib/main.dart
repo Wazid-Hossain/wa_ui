@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wa_ui/login.dart';
+import 'package:wa_ui/pages/HomeScreen/MainHome.dart';
+import 'package:wa_ui/pages/calender.dart';
+import 'package:wa_ui/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Login_page(),
+      home: MainHome(),
     );
   }
 }

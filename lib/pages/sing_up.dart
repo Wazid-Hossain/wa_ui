@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wa_ui/home.dart';
+import 'package:wa_ui/pages/home.dart';
 
 class Sign_up extends StatefulWidget {
   const Sign_up({super.key});
