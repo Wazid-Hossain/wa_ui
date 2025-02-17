@@ -8,17 +8,6 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHomeState extends State<MainHome> {
-  final statusItems = [
-    {'title': 'ORDERS', 'qty': 0, 'amount': 0.00},
-    {'title': 'PENDING', 'qty': 0, 'amount': 0.00},
-    {'title': 'PROCESSING', 'qty': 0, 'amount': 0.00},
-    {'title': 'PICKED', 'qty': 0, 'amount': 0.00},
-    {'title': 'DELIVERED', 'qty': 0, 'amount': 0.00},
-    {'title': 'RETURNED', 'qty': 0, 'amount': 0.00},
-    {'title': 'REPAIR', 'qty': 0, 'amount': 0.00},
-    {'title': 'HOLD', 'qty': 0, 'amount': 0.00},
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +21,7 @@ class _MainHomeState extends State<MainHome> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.logout_rounded),
+            icon: Icon(Icons.power_settings_new),
             color: Colors.white,
           )
         ],
