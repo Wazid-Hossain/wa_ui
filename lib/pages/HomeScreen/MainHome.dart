@@ -8,6 +8,26 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHomeState extends State<MainHome> {
+  final List<Map<String, dynamic>> statuses = [
+    {'title': 'ORDERS', 'color': Colors.black},
+    {'title': 'PENDING', 'color': Colors.orange},
+    {'title': 'PROCESSING', 'color': Colors.orangeAccent},
+    {'title': 'PICKED', 'color': Colors.blue},
+    {'title': 'DELIVERED', 'color': Colors.green},
+    {'title': 'RETURNED', 'color': Colors.red},
+    {'title': 'REPAIR', 'color': Colors.grey},
+    {'title': 'HOLD', 'color': Colors.deepOrange},
+  ];
+
+  void onCardTap(String title) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => OrderDetailsScreen(status: title),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +49,7 @@ class _MainHomeState extends State<MainHome> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image(
-              image: AssetImage('images/zeo_logo.jpg'),
-              height: 100,
-            ),
+            Image(image: AssetImage('images/zeo_logo.jpg'), height: 100),
             Center(
               child: Container(
                 height: 90,
@@ -42,10 +59,9 @@ class _MainHomeState extends State<MainHome> {
                   borderRadius: BorderRadius.circular(20),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 5,
-                      offset: const Offset(0, 0),
-                    ),
+                        color: Colors.black,
+                        blurRadius: 5,
+                        offset: Offset(0, 0)),
                   ],
                 ),
                 child: Column(
@@ -58,9 +74,7 @@ class _MainHomeState extends State<MainHome> {
                         fontSize: 15,
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
+                    SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -77,11 +91,7 @@ class _MainHomeState extends State<MainHome> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 50, vertical: 10),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.horizontal(
-                                right: Radius.circular(5),
-                                left: Radius.circular(5),
-                              ),
-                            ),
+                                borderRadius: BorderRadius.circular(5)),
                           ),
                         ),
                         ElevatedButton(
@@ -97,11 +107,7 @@ class _MainHomeState extends State<MainHome> {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 50, vertical: 10),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.horizontal(
-                                left: Radius.circular(5),
-                                right: Radius.circular(5),
-                              ),
-                            ),
+                                borderRadius: BorderRadius.circular(5)),
                           ),
                         ),
                       ],
@@ -110,78 +116,93 @@ class _MainHomeState extends State<MainHome> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 20,
+            SizedBox(height: 20),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 2.5,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+              ),
+              itemCount: statuses.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () => onCardTap(statuses[index]['title']),
+                  child: OrderStatusCard(
+                    title: statuses[index]['title'],
+                    color: statuses[index]['color'],
+                  ),
+                );
+              },
             ),
-            Column(
-              children: [
-                Container(
-                  height: 400,
-                  width:
-                      500, //our we use double.infinity to adject the container full screen
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 5,
-                        offset: Offset(0, 0),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Dashboard',
-                        style: TextStyle(
-                            color: Colors.deepOrange,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.chevron_left,
-                              color: Colors.deepOrange,
-                            ),
-                          ),
-                          Text(
-                            'February, 2025',
-                            style: TextStyle(
-                                color: Colors.deepOrange,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 10),
-                          ),
-                          IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.chevron_right,
-                                color: Colors.deepOrange,
-                              ))
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                        'Delivered Pain: 0.00, Delivered Shipping: 0.00 \n Returned Paid: 0.00, Returned Shipping: 0.00',
-                        style: TextStyle(),
-                      ),
-                      Text('Net Paid: 0.00'),
-                    ],
-                  ),
-                )
-              ],
-            )
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class OrderStatusCard extends StatelessWidget {
+  final String title;
+  final Color color;
+
+  OrderStatusCard({required this.title, required this.color});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.orange, width: 2),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      padding: EdgeInsets.all(10),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                title,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: color,
+                ),
+              ),
+              SizedBox(height: 5),
+              Text('Qty: 0',
+                  style: TextStyle(fontSize: 14, color: Colors.black)),
+              Text('Amount: 0.00',
+                  style: TextStyle(fontSize: 14, color: Colors.black)),
+            ],
+          ),
+          Icon(Icons.arrow_forward_ios, color: Colors.orange),
+        ],
+      ),
+    );
+  }
+}
+
+class OrderDetailsScreen extends StatelessWidget {
+  final String status;
+
+  OrderDetailsScreen({required this.status});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('$status Details'),
+        backgroundColor: Colors.black,
+      ),
+      body: Center(
+        child: Text(
+          'Details for $status orders',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),
     );
